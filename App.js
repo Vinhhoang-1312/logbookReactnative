@@ -1,21 +1,23 @@
-import { StatusBar } from "expo-status-bar";
+import "react-native-gesture-handler";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import Result from "./screens/Result";
+import Home from "./screens/Home";
+import Notification from "./screens/Notification";
+import EditDelete from "./screens/EditDelete";
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>RentalZ</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={Home} />
+        <Drawer.Screen name="Result" component={Result} />
+        <Drawer.Screen name="EditDelete" component={EditDelete} />
+        <Drawer.Screen name="Notification" component={Notification} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
