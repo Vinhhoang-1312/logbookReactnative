@@ -31,6 +31,7 @@ const Home = ({ navigation }) => {
 
   useEffect(() => {
     createTable();
+    getDatabaselogbookrentalz();
   }, []);
 
   const submitdata = () => {
@@ -77,6 +78,13 @@ const Home = ({ navigation }) => {
                 );
               });
               navigation.navigate("Result");
+              setpropertytype("");
+              setbedrooms("1");
+              setdateandtime("");
+              setfurniture("Fully Furnished");
+              setnotes("");
+              setprice("");
+              setreporter("");
             } catch (error) {
               console.log(error);
             }
@@ -85,6 +93,23 @@ const Home = ({ navigation }) => {
       },
     ]);
   };
+
+  const getDatabaselogbookrentalz = () => {
+    try {
+      db.transaction((tx) => {
+        tx.executeSql(
+          "SELECT * FROM Databaselogbookrentalz",
+          [],
+          (tx, result) => {
+            console.log(JSON.stringify(result.rows));
+          }
+        );
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const createTable = () => {
     db.transaction(function (txn) {
       txn.executeSql(
@@ -146,7 +171,7 @@ const Home = ({ navigation }) => {
               value={dateandtime}
             />
 
-            <Text style={styles.text}>Monthly rent price :</Text>
+            <Text style={styles.text}>Monthly rent price - dollar$:</Text>
             <TextInput
               style={styles.input}
               keyboardType={"numeric"}

@@ -6,6 +6,8 @@ import Result from "./screens/Result";
 import Home from "./screens/Home";
 import Notification from "./screens/Notification";
 import EditDelete from "./screens/EditDelete";
+import Search from "./screens/Search";
+import Details from "./screens/Details";
 
 const Drawer = createDrawerNavigator();
 
@@ -17,6 +19,8 @@ export default function App() {
         <Drawer.Screen name="Result" component={Result} />
         <Drawer.Screen name="EditDelete" component={EditDelete} />
         <Drawer.Screen name="Notification" component={Notification} />
+        <Drawer.Screen name="Search" component={Search} />
+        <Drawer.Screen name="Details" component={Details} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

@@ -23,6 +23,7 @@ function EditDelete({ route, navigation }) {
   const [furniture, setFurniture] = useState("");
   const [notes, setNotes] = useState("");
   const [reporter, setReporter] = useState("");
+  const [empty, setEmpty] = useState([]);
 
   useEffect(() => {
     setId(route.params.Id);
@@ -34,9 +35,7 @@ function EditDelete({ route, navigation }) {
     setNotes(route.params.notes);
     setReporter(route.params.reporter);
   }, []);
-  const image = {
-    uri: "https://img.nh-hotels.net/anantara_plaza_nice_hotel-017-rooms.jpg?output-quality=80&resize=1600:*&background-color=white",
-  };
+
   const editData = () => {
     if (
       propertytype.length === 0 ||
@@ -90,7 +89,20 @@ function EditDelete({ route, navigation }) {
     navigation.navigate("Result");
   };
 
+  const emptydata = () => {
+    return (
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <Text style={{ fontSize: 20, textAlign: "center" }}>
+          Please choose the data in Result screen to edit or delete !!!
+        </Text>
+      </View>
+    );
+  };
   return (
+    // <View style={styles.data}>
+    //   {empty ? (
+    //     emptydata(empty)
+    //   ) : (
     <SafeAreaView style={styles.container}>
       <ScrollView
         style={styles.scrollView}
@@ -176,9 +188,15 @@ function EditDelete({ route, navigation }) {
         </View>
       </ScrollView>
     </SafeAreaView>
+    //   )}
+    // </View>
   );
 }
+
 const styles = StyleSheet.create({
+  data: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     padding: 30,
