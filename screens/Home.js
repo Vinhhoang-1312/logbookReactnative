@@ -167,6 +167,7 @@ const Home = ({ navigation }) => {
             <Text style={styles.text}>Data and Time :</Text>
             <TextInput
               style={styles.input}
+              placeholder="DD/MM/YYYY/HH:MM:SS"
               onChangeText={(value) => setdateandtime(value)}
               value={dateandtime}
             />
